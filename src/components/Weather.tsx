@@ -2,8 +2,10 @@ import {useAppSelector} from "../app/hooks.ts";
 
 
 const Weather = () => {
-    const message = useAppSelector(state => state.message);
-    const{country,city,temp,pressure,sunset} = useAppSelector(state => state.weather);
+
+    const {message,weather} = useAppSelector(state => state.weather);
+    const{country,city,temp,pressure,sunset} = weather
+
     const formatSunset = new Date(+sunset * 1000);
     const sunsetTime = formatSunset.toLocaleString();
 

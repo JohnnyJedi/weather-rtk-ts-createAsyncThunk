@@ -6,30 +6,26 @@ import {fetchWeather} from "./api.ts";
 const weatherSlice = createSlice({
     name: "weather",
     initialState: {
-        country: '',
-        city: '',
-        temp: '',
-        pressure: '',
-        sunset: '',
+        weather:{
+            country: '',
+            city: '',
+            temp: '',
+            pressure: '',
+            sunset: '',
+        },
+        message:'Enter city name'
+
     },
-    reducers: {
-        // changeWeather: (_state, action) => {
-        //     return ({
-        //         country: action.payload.country,
-        //         city: action.payload.city,
-        //         temp: action.payload.temp,
-        //         pressure: action.payload.pressure,
-        //         sunset: action.payload.sunset,
-        //     })
-        // }
-    },
+    reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchWeather.pending, () => {})
-            .addCase(fetchWeather.fulfilled, (_state, action) => action.payload)
-            .addCase(fetchWeather.rejected, () => {})
+            .addCase(fetchWeather.pending, (state) => {state.message = 'Pending'})
+            .addCase(fetchWeather.fulfilled, (state, action) => {
+                state.message = '';
+                state.weather = action.payload
+            })
+            .addCase(fetchWeather.rejected, (state) => {state.message = "Enter correct city name"})
     }
 })
-
 
 export default weatherSlice.reducer;
