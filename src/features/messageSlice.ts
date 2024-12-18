@@ -1,15 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {fetchWeather} from "./api.ts";
 
 
-const  messageSlice = createSlice({
+const messageSlice = createSlice({
     name: "message",
     initialState: 'Enter city name',
-    reducers:{
-changeMessage(_state, action){
-   return  action.payload;
-}
+    reducers: {},
+    extraReducers: builder => {
+        builder
+            .addCase(fetchWeather.pending, () =>  'Pending')
+            .addCase(fetchWeather.fulfilled,() =>  '' )
+            .addCase(fetchWeather.rejected,() => "Enter correct city name")
     }
 })
 
-export const {changeMessage} = messageSlice.actions;
+
 export default messageSlice.reducer;
