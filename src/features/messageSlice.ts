@@ -10,7 +10,7 @@ const messageSlice = createSlice({
         builder
             .addCase(fetchWeather.pending, () =>  'Pending')
             .addCase(fetchWeather.fulfilled,() =>  '' )
-            .addCase(fetchWeather.rejected,() => "Enter correct city name")
+            .addCase(fetchWeather.rejected,(_state,action) => action.error.message )
     }
 })
 
