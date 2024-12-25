@@ -1,17 +1,15 @@
 import React, {useState} from "react";
+import {useAppDispatch} from "../app/hooks.ts";
+import {setCity} from "../features/slices/citySlice.ts";
 
 
-interface Props {
-    setCity: (city: string) => void;
-}
-
-const Form = ({setCity}:Props) => {
+const Form = () => {
     const [cityName, setCityName] = useState('');
+    const dispatch = useAppDispatch();
 
-
-    const getCity = (e:React.ChangeEvent<HTMLFormElement>) => {
+    const getCity = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setCity(cityName)
+        dispatch(setCity(cityName))
         setCityName('');
     }
 

@@ -1,3 +1,5 @@
+import {createContext} from "react";
+
 export interface WeatherInfo {
     city?: string,
     country?: string,
@@ -5,3 +7,16 @@ export interface WeatherInfo {
     pressure?: number,
     sunset?: number
 }
+
+export interface WeatherResponse {
+    name:string,
+    main:{
+        temp: number,
+        pressure: number,
+    },
+    sys:{
+        country: string,
+        sunset: number,
+    }
+}
+
