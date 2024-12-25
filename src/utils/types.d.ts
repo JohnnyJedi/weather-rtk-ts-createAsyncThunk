@@ -1,7 +1,7 @@
-import {createContext} from "react";
+
 
 export interface WeatherInfo {
-    city?: string,
+    cityName?: string,
     country?: string,
     temp?: number,
     pressure?: number,

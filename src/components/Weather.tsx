@@ -21,13 +21,13 @@ const Weather = () => {
     }
 
 
-    const {name, sys: {country, sunset}, main: {temp, pressure}} = data
+    const {cityName,country, sunset,temp, pressure} = data
 
-    const sunsetTime = new Date(+sunset * 1000).toLocaleString();
+    const sunsetTime = new Date(+sunset! * 1000).toLocaleString();
 
     return (
         <div className={'infoWeath'}>
-            <p>Location: {country}, {name}</p>
+            <p>Location: {country}, {cityName}</p>
             <p>Temp: {temp} </p>
             <p>Pressure: {pressure}</p>
             <p>Sunset: {sunsetTime}</p>
